@@ -1,8 +1,9 @@
 {
   "name": "algorithm4th-ts",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc",
     "test": "./node_modules/mocha/bin/mocha.js"
@@ -21,5 +22,8 @@
   "devDependencies": {
     "chai": "^4.3.6",
     "mocha": "^10.0.0"
+  },
+  "dependencies": {
+    "algorithm4th-ts": "^0.0.2"
   }
 }
