@@ -1,5 +1,5 @@
 
-type Comparator = (a: any, b: any) => number;
+import { Comparator } from "./types";
 
 
 export function quickSort<T>(array: T[], cmp?: Comparator): T[] {
