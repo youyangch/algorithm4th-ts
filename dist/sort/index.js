@@ -1,5 +1,15 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.quickSort = void 0;
+exports.quickSort = exports.selectSort = exports.mergeSort = exports.shellSort = exports.bubbleSort = exports.insertSort = void 0;
+var insert_sort_1 = require("./insert-sort");
+Object.defineProperty(exports, "insertSort", { enumerable: true, get: function () { return insert_sort_1.insertSort; } });
+var bubble_sort_1 = require("./bubble-sort");
+Object.defineProperty(exports, "bubbleSort", { enumerable: true, get: function () { return bubble_sort_1.bubbleSort; } });
+var shell_sort_1 = require("./shell-sort");
+Object.defineProperty(exports, "shellSort", { enumerable: true, get: function () { return shell_sort_1.shellSort; } });
+var merge_sort_1 = require("./merge-sort");
+Object.defineProperty(exports, "mergeSort", { enumerable: true, get: function () { return merge_sort_1.mergeSort; } });
+var select_sort_1 = require("./select-sort");
+Object.defineProperty(exports, "selectSort", { enumerable: true, get: function () { return select_sort_1.selectSort; } });
 var quick_sort_1 = require("./quick-sort");
 Object.defineProperty(exports, "quickSort", { enumerable: true, get: function () { return quick_sort_1.quickSort; } });
