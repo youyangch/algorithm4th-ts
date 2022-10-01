@@ -1,6 +1,6 @@
 {
   "name": "algorithm4th-ts",
-  "version": "0.0.2",
+  "version": "0.0.21",
   "description": "",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -12,7 +12,10 @@
     "type": "git",
     "url": "git+https://github.com/youyangch/algorithm4th-ts.git"
   },
-  "keywords": [],
+  "keywords": [
+    "algorithm",
+    "data structure"
+  ],
   "author": "youyangcheng",
   "license": "ISC",
   "bugs": {
