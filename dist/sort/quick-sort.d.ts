@@ -1,3 +1,2 @@
-declare type Comparator = <T>(a: T, b: T) => number;
+import { Comparator } from "./types";
 export declare function quickSort<T>(array: T[], cmp?: Comparator): T[];
-export {};

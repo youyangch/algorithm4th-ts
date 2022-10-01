@@ -2,24 +2,33 @@
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.quickSort = void 0;
 function quickSort(array, cmp) {
+    const less = (i, j) => {
+        if (cmp) {
+            if (cmp(array[i], array[j]) < 0)
+                return true;
+            else
+                return false;
+        }
+        return array[i] < array[j];
+    };
+    const exch = (i, j) => {
+        let temp = array[i];
+        array[i] = array[j];
+        array[j] = temp;
+        return true;
+    };
     const partition = (array, start, end) => {
-        let pivot = array[start];
         let i = start + 1;
         let j = end;
         while (i <= j) {
-            if (array[i] < pivot) {
+            if (less(i, start)) {
                 i++;
             }
             else {
-                let temp = array[i];
-                array[i] = array[j];
-                array[j] = temp;
-                j--;
+                exch(i, j--);
             }
         }
-        let temp = array[i - 1];
-        array[i - 1] = array[start];
-        array[start] = temp;
+        exch(start, i - 1);
         return i - 1;
     };
     const _quick = (array, start, end) => {
@@ -33,5 +42,3 @@ function quickSort(array, cmp) {
     return array;
 }
 exports.quickSort = quickSort;
-let a = [1, 12, 8, 39, 34, 45, 459];
-console.log(quickSort(a));
