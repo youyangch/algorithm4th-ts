@@ -20,9 +20,8 @@
   },
   "homepage": "https://github.com/youyangch/algorithm4th-ts#readme",
   "devDependencies": {
+    "@types/node": "^18.7.23",
     "chai": "^4.3.6",
     "mocha": "^10.0.0"
-  },
-  "dependencies": {
   }
 }

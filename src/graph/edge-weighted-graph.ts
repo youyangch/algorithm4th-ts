@@ -1,4 +1,5 @@
 import { Comparable } from "./types";
+import { readline } from "../io";
 
 
 
@@ -30,7 +31,7 @@ class Edge<T> implements Comparable<Edge<T>> {
 
 export class EdgeWeightGraph {
 
-  private adj: Map<any, any> = new Map();
+  private adj: Map<any, any[]> = new Map();
   private E: number = 0;
 
   constructor(private V: number) { }
@@ -38,8 +39,21 @@ export class EdgeWeightGraph {
 
   addEdge<K>(e: Edge<K>) {
     let v = e.either(), w = e.other();
-    this.adj.get(v).add(e)
-    this.adj.get(w).add(e)
+
+    if (!this.adj.has(v)) {
+      this.adj.set(v, [e])
+    }
+    else {
+      this.adj.get(v)?.push(e)
+    }
+
+    if (!this.adj.has(w)) {
+      this.adj.set(w, [e])
+    }
+    else {
+      this.adj.get(w)?.push(e)
+    }
+
     this.E++;
   }
 
@@ -50,12 +64,29 @@ export class EdgeWeightGraph {
 }
 
 
-(function () {
-
-  
+; (async function () {
 
 
 
+  let data: string[] = await readline('data/tinyEWG.txt')
 
-})()
+  if (data.length == 0) throw new Error('can not read file')
+
+  let V = parseInt(data.shift()!)
+  let E = parseInt(data.shift()!)
+
+  let weight_graph = new EdgeWeightGraph(V)
+
+  for (let line of data) {
+
+    let [v, w, weight] = line.split(" ").map(e => parseFloat(e))
+
+    weight_graph.addEdge(new Edge(v, w, weight))
+
+
+  }
+
+  console.log(weight_graph)
+
+})
 
