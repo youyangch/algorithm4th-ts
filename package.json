@@ -1,7 +1,7 @@
 {
   "name": "algorithm4th-ts",
   "version": "0.0.21",
-  "description": "",
+  "description": "the implementaion for the algorithm 4th",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
@@ -16,7 +16,7 @@
     "algorithm",
     "data structure"
   ],
-  "author": "youyangcheng",
+  "author": "yangcheng.you@outlook.com",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/youyangch/algorithm4th-ts/issues"

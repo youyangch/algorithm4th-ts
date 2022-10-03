@@ -1,28 +1,28 @@
-import { Comparable } from "./types";
+import { Comparable } from "../types";
 import { readline } from "../io";
 
 
 
-class Edge<T> implements Comparable<Edge<T>> {
+export class Edge<T> implements Comparable<Edge<T>> {
 
   constructor(private v: T, private w: T, private weight: number) {
 
   }
 
-  either() {
+  either(): T {
     return this.v;
   }
 
-  other() {
+  other(): T {
     return this.w;
   }
 
-  getWeight() {
+  getWeight(): number {
     return this.weight;
   }
 
   compareTo(b: Edge<T>): number {
-    throw new Error("Method not implemented.");
+    return this.weight - b.weight;
   }
 
 
@@ -57,7 +57,11 @@ export class EdgeWeightGraph {
     this.E++;
   }
 
-  getAdj(k: any) {
+  getAdj() {
+    return this.adj;
+  }
+
+  getEdges(k: any) {
     return this.adj.get(k);
   }
 
