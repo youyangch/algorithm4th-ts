@@ -5,28 +5,28 @@ export class DirectedEdge<T> {
 
   constructor(private v: T, private w: T, private weight: number) { }
 
-  from() {
+  from(): T {
     return this.v;
   }
 
-  to() {
+  to(): T {
     return this.w;
   }
 
-  getWeight() {
+  getWeight(): number {
     return this.weight;
   }
 
 }
 
-export class EdgeWeightDigraph {
+export class EdgeWeightedDigraph {
 
-  private adj: Map<any, any[]> = new Map();
+  private adj: Map<any, DirectedEdge<number>[]> = new Map();
   private E: number = 0;
 
   constructor(private V: number) { }
 
-  addEdge<T>(e: DirectedEdge<T>) {
+  addEdge<T extends number>(e: DirectedEdge<T>) {
 
     if (!this.adj.has(e.from())) {
       this.adj.set(e.from(), [e])
@@ -36,6 +36,10 @@ export class EdgeWeightDigraph {
     }
 
     this.E++;
+  }
+
+  getV(){
+    return this.V;
   }
 
   getAdj() {
