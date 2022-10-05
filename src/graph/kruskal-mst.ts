@@ -7,14 +7,14 @@ import { Edge, EdgeWeightGraph } from "./edge-weighted-graph";
  * Kruskal
  * 基于并查集, 连结最小的有效横切边
  */
-export class KruskalMST {
+export class KruskalMST<VERTEX extends number> {
 
-  private uf: UF = new UF();
-  private pq: MinPriorityQueue<Edge<number>> = new MinPriorityQueue();
-  private mst: Edge<number>[] = []
+  private uf: UF<VERTEX>= new UF();
+  private pq: MinPriorityQueue<Edge<VERTEX>> = new MinPriorityQueue();
+  private mst: Edge<VERTEX>[] = []
 
 
-  constructor(private graph: EdgeWeightGraph) {
+  constructor(private graph: EdgeWeightGraph<VERTEX>) {
     this.algo()
   }
 
@@ -27,7 +27,7 @@ export class KruskalMST {
 
     while (this.pq.size() > 1) {
 
-      let min: Edge<number> = this.pq.deleteMin()!
+      let min: Edge<VERTEX> = this.pq.deleteMin()!
 
       let v = min.either()
       let w = min.other()

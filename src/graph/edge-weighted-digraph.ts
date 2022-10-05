@@ -1,15 +1,15 @@
 import { readline } from "../io";
 
 
-export class DirectedEdge<T> {
+export class DirectedEdge<VERTEX> {
 
-  constructor(private v: T, private w: T, private weight: number) { }
+  constructor(private v: VERTEX, private w: VERTEX, private weight: number) { }
 
-  from(): T {
+  from(): VERTEX {
     return this.v;
   }
 
-  to(): T {
+  to(): VERTEX {
     return this.w;
   }
 
@@ -19,14 +19,14 @@ export class DirectedEdge<T> {
 
 }
 
-export class EdgeWeightedDigraph {
+export class EdgeWeightedDigraph<VERTEX> {
 
-  private adj: Map<any, DirectedEdge<number>[]> = new Map();
+  private adj: Map<VERTEX, DirectedEdge<VERTEX>[]> = new Map();
   private E: number = 0;
 
   constructor(private V: number) { }
 
-  addEdge<T extends number>(e: DirectedEdge<T>) {
+  addEdge(e: DirectedEdge<VERTEX>) {
 
     if (!this.adj.has(e.from())) {
       this.adj.set(e.from(), [e])
@@ -38,7 +38,7 @@ export class EdgeWeightedDigraph {
     this.E++;
   }
 
-  getV(){
+  getV() {
     return this.V;
   }
 

@@ -1,9 +1,9 @@
 
-export class UF {
+export class UF<T extends number>{
 
-  private id: number[] = []
+  private id: T[] = []
 
-  find(v: number) {
+  find(v: T): T {
     if (this.id[v] == undefined) {
       this.id[v] = v;
     }
@@ -14,7 +14,7 @@ export class UF {
     return this.id[v]
   }
 
-  union(v: number, w: number) {
+  union(v: T, w: T) {
 
     let p_v = this.find(v)
     let p_w = this.find(w)
@@ -35,7 +35,7 @@ export class UF {
 
   }
 
-  connected(v: number, w: number): boolean {
+  connected(v: T, w: T): boolean {
     let p_v = this.find(v)
     let p_w = this.find(w)
     return p_v === p_w

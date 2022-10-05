@@ -2,6 +2,8 @@ import { readline } from "../io";
 import { IndexMinPriorityQueue } from "../list";
 import { DirectedEdge, EdgeWeightedDigraph, } from './edge-weighted-digraph'
 
+
+
 export class DijkstraSP {
 
   dist(v: number) {
@@ -75,7 +77,7 @@ export class DijkstraSP {
     }
   }
 
-  constructor(private digraph: EdgeWeightedDigraph, private start: number) {
+  constructor(private digraph: EdgeWeightedDigraph<number>, private start: number) {
 
     this.algo()
   }
@@ -98,7 +100,7 @@ export class DijkstraSP {
   let V = parseInt(data.shift()!)
   let E = parseInt(data.shift()!)
 
-  let weight_graph = new EdgeWeightedDigraph(V)
+  let weight_graph: EdgeWeightedDigraph<number> = new EdgeWeightedDigraph(V)
 
   for (let line of data) {
 

@@ -7,12 +7,12 @@ import { DirectedEdge, EdgeWeightedDigraph, } from './edge-weighted-digraph'
  * Bellman Ford
  * 无环就不能再次放松已放松过的点, 则按拓扑顺序放松所有可达的点即可
  */
-export class BellmanFordSP {
-  dist(v: number) {
+export class BellmanFordSP <VERTEX extends number>{
+  dist(v: VERTEX) {
     return this.distTo[v]
   }
 
-  pathTo(v: number): number[] {
+  pathTo(v: VERTEX): VERTEX[] {
 
     let start = v;
     let path = [v]
@@ -40,10 +40,10 @@ export class BellmanFordSP {
   private algo() {
 
     for (let v = 0; v < this.digraph.getV(); v++) {
-      this.distTo[v] = Number.MAX_SAFE_INTEGER
+      this.distTo[v] = Number.MAX_SAFE_INTEGER as VERTEX
     }
 
-    this.distTo[this.start] = 0;
+    this.distTo[this.start] = 0 as VERTEX;
     this.queue.push(this.start)
     this.onQ.add(this.start)
 
@@ -58,7 +58,7 @@ export class BellmanFordSP {
 
   }
 
-  private relax(v: number) {
+  private relax(v: VERTEX) {
 
     let edges = this.digraph.getEdges(v) ?? []
 
@@ -66,7 +66,7 @@ export class BellmanFordSP {
 
       let w = edge.to()
       if (this.distTo[w] > this.distTo[v] + edge.getWeight()) {
-        this.distTo[w] = this.distTo[v] + edge.getWeight()
+        this.distTo[w]  = this.distTo[v] + edge.getWeight() as VERTEX
         this.edgeTo[w] = v;
 
         if (!this.onQ.has(w)) {
@@ -82,15 +82,15 @@ export class BellmanFordSP {
 
   }
 
-  constructor(private digraph: EdgeWeightedDigraph, private start: number) {
+  constructor(private digraph: EdgeWeightedDigraph<VERTEX>, private start: VERTEX) {
 
     this.algo()
   }
 
-  private distTo: number[] = []
-  private edgeTo: number[] = []
-  private queue: number[] = []
-  private onQ: Set<number> = new Set()
+  private distTo: VERTEX[] = []
+  private edgeTo: VERTEX[] = []
+  private queue: VERTEX[] = []
+  private onQ: Set<VERTEX> = new Set()
   private count = 0;
   private hasNegetiveCycle: boolean = false;
 
@@ -105,7 +105,7 @@ export class BellmanFordSP {
   let V = parseInt(data.shift()!)
   let E = parseInt(data.shift()!)
 
-  let weight_graph = new EdgeWeightedDigraph(V)
+  let weight_graph: EdgeWeightedDigraph<number> = new EdgeWeightedDigraph(V)
 
   for (let line of data) {
 

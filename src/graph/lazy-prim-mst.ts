@@ -6,13 +6,13 @@ import { EdgeWeightGraph, Edge } from './edge-weighted-graph'
  * 基于已经连通的点的边, 不断加入有效的横切边(pq中包含失效的横切边)
  * 加权图的任意切分, 权重最小的横切边一定属于最小生成树
  */
-export class LazyPrimMST {
+export class LazyPrimMST<VERTEX> {
 
-  private pq: MinPriorityQueue<Edge<unknown>> = new MinPriorityQueue()
-  private mst: Edge<unknown>[] = [];
+  private pq: MinPriorityQueue<Edge<VERTEX>> = new MinPriorityQueue()
+  private mst: Edge<VERTEX>[] = [];
   private marked = new Set();
 
-  constructor(private graph: EdgeWeightGraph, private start: any) {
+  constructor(private graph: EdgeWeightGraph<VERTEX>, private start: any) {
 
     this.algo()
   }

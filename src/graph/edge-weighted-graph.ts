@@ -3,17 +3,17 @@ import { readline } from "../io";
 
 
 
-export class Edge<T> implements Comparable<Edge<T>> {
+export class Edge<VERTEX> implements Comparable<Edge<VERTEX>> {
 
-  constructor(private v: T, private w: T, private weight: number) {
+  constructor(private v: VERTEX, private w: VERTEX, private weight: number) {
 
   }
 
-  either(): T {
+  either(): VERTEX {
     return this.v;
   }
 
-  other(): T {
+  other(): VERTEX {
     return this.w;
   }
 
@@ -21,7 +21,7 @@ export class Edge<T> implements Comparable<Edge<T>> {
     return this.weight;
   }
 
-  compareTo(b: Edge<T>): number {
+  compareTo(b: Edge<VERTEX>): number {
     return this.weight - b.weight;
   }
 
@@ -29,15 +29,15 @@ export class Edge<T> implements Comparable<Edge<T>> {
 }
 
 
-export class EdgeWeightGraph {
+export class EdgeWeightGraph<VERTEX> {
 
-  private adj: Map<any, any[]> = new Map();
+  private adj: Map<VERTEX, Edge<VERTEX>[]> = new Map();
   private E: number = 0;
 
   constructor(private V: number) { }
 
 
-  addEdge<K>(e: Edge<K>) {
+  addEdge(e: Edge<VERTEX>) {
     let v = e.either(), w = e.other();
 
     if (!this.adj.has(v)) {
